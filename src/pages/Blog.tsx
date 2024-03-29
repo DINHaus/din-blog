@@ -71,16 +71,16 @@ const BlogEntityTitle = styled.h2`
 
 `;
 
-const TagsList = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    justify-content: space-between;
-    padding: 2rem;
-`;
+// const TagsList = styled.div`
+//     display: flex;
+//     flex-wrap: wrap;
+//     margin-top: 1rem;
+//     margin-bottom: 1rem;
+//     border-top: 1px solid #ccc;
+//     border-bottom: 1px solid #ccc;
+//     justify-content: space-between;
+//     padding: 2rem;
+// `;
 
 const StyledLink = styled(Link)`
   color: hsl(226, 70.0%, 55.5%);
