@@ -102,13 +102,13 @@ function Blog() {
     const { records: dinRecords } = useRecords({
         daoId: daoId,
         chainId: chainId as ValidNetwork,
-        recordType: "DIN",
+        recordType: "DUCEREF",
     });
 
     const { records: commentRecords } = useRecords({
         daoId: daoId,
         chainId: chainId as ValidNetwork,
-        recordType: "DINComment",
+        recordType: "DUCE",
     });
 
     console.log(dinRecords);

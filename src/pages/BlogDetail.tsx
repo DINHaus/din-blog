@@ -46,14 +46,14 @@ function BlogDetail() {
     let { records } = useRecords({
         daoId: daoId,
         chainId: chainId as ValidNetwork,
-        recordType: "DIN",
+        recordType: "DUCEREF",
         hash: contentId
     });
 
     const { records: comment } = useRecords({
         daoId: daoId,
         chainId: chainId as ValidNetwork,
-        recordType: "DINComment",
+        recordType: "DUCE",
         hash: contentId
     });
 
