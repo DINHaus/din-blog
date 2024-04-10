@@ -61,6 +61,16 @@ function BlogDetail() {
         records = comment;
     }
 
+    const getBlogURL = (URI: string) => {
+        // TODO: this is very fagile
+        // example: https://dinhaus.github.io/din-admin/#/molochv3/0xaa36a7/0x738e841225bef5059640591f453eb7e9074c42c2/articles/0x53621709eb82041098d03fdd421cf0b78cd4dca68ee294084bff16ca9c66c689
+        // format molochV3/chainId/daoId/articles/contentId
+        // blog example: http://localhost:5173/din-blog/#/content/0xaa36a7/0x738e841225bef5059640591f453eb7e9074c42c2/0x53621709eb82041098d03fdd421cf0b78cd4dca68ee294084bff16ca9c66c689
+        // new format content/chainId/daoId/contentId
+        const parts = URI.split("/");
+        return `/content/${parts[6]}/${parts[7]}/${parts[9]}`;
+    }
+
     return (
         <>
             <h1>{dao?.name || "Not Found"}</h1>
@@ -74,6 +84,7 @@ function BlogDetail() {
                         <div key={record.id}>
                             <BlogDetailTitleBlock>
                                 <h2>{parsedContent.title}</h2>
+                                {(record.parsedContent as BlogPost)?.contentURI && <StyledLink to={`${getBlogURL((record.parsedContent as BlogPost)?.contentURI)}`}>See original post</StyledLink>}
                                 <BlogDetailInfo>
                                     <p>{formattedDate}</p>
                                     <StyledLink to={`/blog/${chainId}/${daoId}`}>See all posts</StyledLink>
