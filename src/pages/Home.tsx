@@ -1,17 +1,13 @@
-
-import '../App.css'
-
 function Home() {
-  
   // get params from url path
-  
 
   return (
     <>
-      <h1>Din Blog</h1>
-      
+      <h1 className="text-3xl font-bold underline text-red-500">
+        Hello world!
+      </h1>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
