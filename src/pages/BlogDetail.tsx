@@ -1,34 +1,10 @@
 import { Link, useParams } from "react-router-dom";
-// import '../App.css'
 import { useRecords } from "../hooks/UseRecords";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import { useDaoData } from "@daohaus/moloch-v3-hooks";
 import { BlogPost } from "../utils/types";
 
-import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
-
-const ReactMarkdownWrapper = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-`;
-
-const BlogDetailTitleBlock = styled.div``;
-
-const BlogDetailInfo = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const StyledLink = styled(Link)`
-  color: hsl(226, 70%, 55.5%);
-  text-decoration: none;
-
-  &:hover {
-    color: #888;
-  }
-`;
 
 function BlogDetail() {
   const { chainId, daoId, contentId } = useParams();
@@ -66,10 +42,12 @@ function BlogDetail() {
   };
 
   return (
-    <>
-      <h1>{dao?.name || "Not Found"}</h1>
+    <div className="w-full">
+      <h1 className="text-lg font-semibold">
+        {dao?.name ? `${dao?.name}'s blog` : "Not Found"}
+      </h1>
 
-      <div>
+      <article className="py-6 prose dark:prose-invert">
         {records?.map((record) => {
           const parsedContent: BlogPost = record.parsedContent as BlogPost;
           const date = new Date(Number(record.createdAt) * 1000);
@@ -79,32 +57,41 @@ function BlogDetail() {
           )} ${date.getDate()}`;
           return (
             <div key={record.id}>
-              <BlogDetailTitleBlock>
-                <h2>{parsedContent.title}</h2>
+              <div>
+                <h2 className="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight">
+                  {parsedContent.title}
+                </h2>
+
+                <hr className="my-4" />
+
                 {(record.parsedContent as BlogPost)?.contentURI && (
-                  <StyledLink
+                  <Link
+                    className="text-blue-500 hover:text-blue-800 "
                     to={`${getBlogURL(
                       (record.parsedContent as BlogPost)?.contentURI
                     )}`}
                   >
                     See original post
-                  </StyledLink>
+                  </Link>
                 )}
-                <BlogDetailInfo>
+                <div className="flex justify-between my-4 text-sm">
                   <p>{formattedDate}</p>
-                  <StyledLink to={`/blog/${chainId}/${daoId}`}>
+                  <Link
+                    className="text-blue-500 hover:text-blue-800"
+                    to={`/blog/${chainId}/${daoId}`}
+                  >
                     See all posts
-                  </StyledLink>
-                </BlogDetailInfo>
-              </BlogDetailTitleBlock>
-              <ReactMarkdownWrapper>
+                  </Link>
+                </div>
+              </div>
+              <div className="mt-8 mb-8 text-lg">
                 <ReactMarkdown>{parsedContent?.content}</ReactMarkdown>
-              </ReactMarkdownWrapper>
+              </div>
             </div>
           );
         })}
-      </div>
-    </>
+      </article>
+    </div>
   );
 }
 

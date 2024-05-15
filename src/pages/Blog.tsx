@@ -1,11 +1,8 @@
-
-import { Link, useParams } from 'react-router-dom'
-import '../App.css'
-import { useRecords } from '../hooks/UseRecords';
+import { Link, useParams } from "react-router-dom";
+import { useRecords } from "../hooks/UseRecords";
 import { ValidNetwork } from "@daohaus/keychain-utils";
-import { useDaoData } from '@daohaus/moloch-v3-hooks';
-import { BlogPost } from '../utils/types';
-import styled from 'styled-components';
+import { useDaoData } from "@daohaus/moloch-v3-hooks";
+import { BlogPost } from "../utils/types";
 
 // example record data
 // [
@@ -37,127 +34,86 @@ import styled from 'styled-components';
 //             "tag": "DIN"
 //         }
 
-const BlogTitle = styled.h1`
-    font-size: 2rem;
-    border-bottom: 1px solid #ccc;
-`;
-
-const BlogTitleBlockWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    max-width: 800px;
-`;
-
-const BlogEntityItem = styled.div`
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #ccc;
-`;
-
-const BlogEntityDate = styled.p`
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 0;
-`;
-
-const BlogEntityTitle = styled.h2`
-    font-size: 1.5rem;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
-
-`;
-
-// const TagsList = styled.div`
-//     display: flex;
-//     flex-wrap: wrap;
-//     margin-top: 1rem;
-//     margin-bottom: 1rem;
-//     border-top: 1px solid #ccc;
-//     border-bottom: 1px solid #ccc;
-//     justify-content: space-between;
-//     padding: 2rem;
-// `;
-
-const StyledLink = styled(Link)`
-  color: hsl(226, 70.0%, 55.5%);
-  text-decoration: none;
-
-  &:hover {
-    color: #888;
-  }
-`;
-
-
 function Blog() {
-    const { chainId, daoId } = useParams()
-    const { dao } = useDaoData({
-        daoId: daoId || "",
-        daoChain: chainId as ValidNetwork,
-    });
+  const { chainId, daoId } = useParams();
+  const { dao } = useDaoData({
+    daoId: daoId || "",
+    daoChain: chainId as ValidNetwork,
+  });
 
-    const { records: dinRecords } = useRecords({
-        daoId: daoId,
-        chainId: chainId as ValidNetwork,
-        recordType: "DUCEREF",
-    });
+  const { records: dinRecords } = useRecords({
+    daoId: daoId,
+    chainId: chainId as ValidNetwork,
+    recordType: "DUCEREF",
+  });
 
-    const { records: commentRecords } = useRecords({
-        daoId: daoId,
-        chainId: chainId as ValidNetwork,
-        recordType: "DUCE",
-    });
+  const { records: commentRecords } = useRecords({
+    daoId: daoId,
+    chainId: chainId as ValidNetwork,
+    recordType: "DUCE",
+  });
 
-    console.log(dinRecords);
-    console.log(dao);
-    console.log(commentRecords);
+  console.log("din records", dinRecords);
+  console.log("dao", dao);
+  console.log("comment records", commentRecords);
 
-    return (
-        <>
-            <BlogTitleBlockWrapper>
-                <BlogTitle>{dao?.name || "Not Found"}</BlogTitle>
-                {/* <TagsList>
-                    <StyledLink to={``}>Document</StyledLink>
-                    <StyledLink to={``}>Event</StyledLink>
-                    <StyledLink to={``}>Special</StyledLink>
-                </TagsList> */}
-            </BlogTitleBlockWrapper>
-            <div>
-                {commentRecords?.map((record) => {
-                    const parsedContent: BlogPost = record.parsedContent as BlogPost;
-                    const date = new Date(Number(record.createdAt) * 1000);
-                    const formattedDate = `${date.getFullYear()} ${date.toLocaleString('default', { month: 'short' })} ${date.getDate()}`;
-                    return (
-                        <BlogEntityItem key={record.id}>
-                            <BlogEntityDate>{formattedDate}</BlogEntityDate>
-                            <BlogEntityTitle>
-                                <StyledLink to={`/content/${chainId}/${daoId}/${parsedContent.id}`}>{parsedContent.title || "no title"}</StyledLink>
-                            </BlogEntityTitle>
-                        </BlogEntityItem>
-                    )
-
-                }
-                )}
-
-                {dinRecords?.map((record) => {
-                    const parsedContent: BlogPost = record.parsedContent as BlogPost;
-                    const date = new Date(Number(record.createdAt) * 1000);
-                    const formattedDate = `${date.getFullYear()} ${date.toLocaleString('default', { month: 'short' })} ${date.getDate()}`;
-                    return (
-                        <BlogEntityItem key={record.id}>
-                            <BlogEntityDate>{formattedDate}</BlogEntityDate>
-                            <BlogEntityTitle>
-                                <StyledLink to={`/content/${chainId}/${daoId}/${parsedContent.id}`}>{parsedContent.title || "no title"}</StyledLink>
-                            </BlogEntityTitle>
-                        </BlogEntityItem>
-                    )
-                })}
+  return (
+    <div className="w-full">
+      <div className="flex flex-col justify-center mt-8 mb-8">
+        <h1 className="text-4xl text-center font-bold mb-8">
+          {dao?.name ? `${dao?.name}'s blog` : "Not Found"}
+        </h1>
+        {/* <div className="flex flex-wrap mt-4 mb-4 border-t border-b border-gray-300 justify-between p-8">
+          include tags here
+        </div> */}
+      </div>
+      <div>
+        {commentRecords?.map((record) => {
+          const parsedContent: BlogPost = record.parsedContent as BlogPost;
+          const date = new Date(Number(record.createdAt) * 1000);
+          const formattedDate = `${date.getFullYear()} ${date.toLocaleString(
+            "default",
+            { month: "short" }
+          )} ${date.getDate()}`;
+          return (
+            <div className="mt-4 mb-8" key={record.id}>
+              <p className="text-sm font-semibold mb-0">{formattedDate}</p>
+              <h2 className="text-2xl font-bold mt-1 mb-1">
+                <Link
+                  className="text-blue-500 hover:text-blue-800"
+                  to={`/content/${chainId}/${daoId}/${parsedContent.id}`}
+                >
+                  {parsedContent.title || "no title"}
+                </Link>
+              </h2>
             </div>
-        </>
-    )
+          );
+        })}
+
+        {dinRecords?.map((record) => {
+          const parsedContent: BlogPost = record.parsedContent as BlogPost;
+          const date = new Date(Number(record.createdAt) * 1000);
+          const formattedDate = `${date.getFullYear()} ${date.toLocaleString(
+            "default",
+            { month: "short" }
+          )} ${date.getDate()}`;
+          return (
+            <div className="mt-4 mb-8" key={record.id}>
+              <p className="text-sm font-semibold mb-0">{formattedDate}</p>
+              <h2 className="text-2xl font-bold mt-1 mb-1">
+                <Link
+                  className="text-blue-500 hover:text-blue-800"
+                  to={`/content/${chainId}/${daoId}/${parsedContent.id}`}
+                >
+                  {parsedContent.title || "no title"}
+                </Link>
+              </h2>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-export default Blog
+export default Blog;
