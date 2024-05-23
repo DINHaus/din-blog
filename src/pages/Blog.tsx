@@ -56,7 +56,7 @@ function Blog() {
         <h1 className="text-4xl text-center font-bold mb-8">
           {dao?.name ? `${dao?.name}'s blog` : "Not Found"}
         </h1>
-        <div className="flex flex-wrap mt-4 mb-4 border-t border-b border-gray-300 justify-between p-8">
+        <div className="flex flex-wrap mt-4 mb-4 border-t-[3px] border-b-[3px] border-gray-300 justify-between p-8">
           {tags.map((tag) => (
             <p
               key={tag}
