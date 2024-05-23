@@ -8,6 +8,7 @@ import { BlogPost } from "../utils/types";
 const defaultGraphApiKeys = {
   "0x1": import.meta.env.VITE_GRAPH_API_KEY_MAINNET,
   "0x64": import.meta.env.VITE_GRAPH_API_KEY_MAINNET,
+  "0xaa36a7": import.meta.env.VITE_GRAPH_API_KEY_MAINNET,
 };
 
 type Record = {
@@ -38,8 +39,6 @@ type Record = {
     parentId: string;
   };
 };
-
-
 
 const fetchRecords = async ({
   daoId,
@@ -79,50 +78,34 @@ const fetchRecords = async ({
       });
     }
 
-
     for (let i = 0; i < data.items.length; i++) {
       (data.items[i].parsedContent as BlogPost).tag = recordType;
     }
 
-
     if (hash && recordType === "DUCEREF") {
       console.log("hash recordtype", hash, recordType);
-      const filteredData = data.items.filter(
-        (item) => {
-          return (item as Record)?.parsedContent?.id === hash
-        }
-
-      );
+      const filteredData = data.items.filter((item) => {
+        return (item as Record)?.parsedContent?.id === hash;
+      });
       console.log("filteredData DIN", filteredData);
       return filteredData;
     } else if (hash && recordType === "DUCE") {
-
-      const filteredData = data.items.filter(
-        (item) => {
-          return (item as Record)?.parsedContent?.id === hash
-        }
-      );
+      const filteredData = data.items.filter((item) => {
+        return (item as Record)?.parsedContent?.id === hash;
+      });
       console.log("filteredData", filteredData);
       return filteredData;
     } else if (parentHash && recordType === "DUCE") {
-
-      const filteredData = data.items.filter(
-        (item) => {
-          return (item as Record)?.parsedContent?.parentId === parentHash
-        }
-      );
+      const filteredData = data.items.filter((item) => {
+        return (item as Record)?.parsedContent?.parentId === parentHash;
+      });
       console.log("filteredData", filteredData);
       return filteredData;
     } else if (recordType === "DUCE") {
-
-      return data.items.filter(
-        (item) => {
-          return (item as Record)?.parsedContent.description !== ""
-        }
-      );
+      return data.items.filter((item) => {
+        return (item as Record)?.parsedContent.description !== "";
+      });
     }
-
-
 
     return data.items;
   } catch (error) {
@@ -153,7 +136,10 @@ export const useRecords = ({
   graphApiKeys?: Keychain;
 }) => {
   const { data, error, ...rest } = useQuery(
-    [`${daoId || 'all'}_${recordType}_h${hash || ""}-ph${parentHash || ""}`, { daoId, chainId }],
+    [
+      `${daoId || "all"}_${recordType}_h${hash || ""}-ph${parentHash || ""}`,
+      { daoId, chainId },
+    ],
     () =>
       fetchRecords({
         daoId,
