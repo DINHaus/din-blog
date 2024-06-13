@@ -9,7 +9,7 @@ function Blog() {
   const [selectedTag, setSelectedTag] = useState("");
 
   const { chainId, daoId } = useParams();
-  const { dao } = useDaoData({
+  const { dao, isLoading: isLoadingDaoData, } = useDaoData({
     daoId: daoId || "",
     daoChain: chainId as ValidNetwork,
   });
@@ -54,7 +54,10 @@ function Blog() {
     <div className="w-full">
       <div className="flex flex-col justify-center mt-8 mb-8">
         <h1 className="text-4xl text-center font-bold mb-8">
-          {dao?.name ? `${dao?.name}'s blog` : "Not Found"}
+          {isLoadingDaoData && "Loading..."}
+
+
+          {!isLoadingDaoData && dao?.name ? `${dao?.name}'s blog` : "HUB"}
         </h1>
         <div className="flex flex-wrap mt-4 mb-4 border-t-[3px] border-b-[3px] border-gray-300 justify-between p-8">
           {tags.map((tag) => (
