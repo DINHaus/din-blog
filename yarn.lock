@@ -259,17 +259,17 @@
     stream-browserify "^3.0.0"
     util "^0.12.4"
 
-"@daohaus/abis@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@daohaus/abis/-/abis-0.5.1.tgz#0dd87ac39d26ac0b5089c20b03b8257201015157"
-  integrity sha512-EQ4Z1JEEaYmXFwkG44WrRxHTvbJSKNnrMOO8zmww935LpIikysrYu9HU+Mi0H+GHCBJz9c0MsnYcT0nhZHS25Q==
+"@daohaus/abis@0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@daohaus/abis/-/abis-0.5.2.tgz#f43664a4580be707e762c0c145851965cbe78be5"
+  integrity sha512-Xe1aCsSOXULeEIjF4vzPx0zdX76W36PBT01fMyhCtXQEOSuFP0MEzcwtJqwhKp0T9xKCggEg/gz2/xmXQsON5A==
 
-"@daohaus/data-fetch-utils@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@daohaus/data-fetch-utils/-/data-fetch-utils-0.5.1.tgz#227181f30fb69a89b88f524b88062736a99caac1"
-  integrity sha512-A1kzXaYwcHCSDihMPtm3H3UJ1BgVQPNJkXwrKWbcyJXI/2vq36sIsAy9LAgd6Aqwt3pVC5v0/7rt9/Ffh/w79w==
+"@daohaus/data-fetch-utils@0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@daohaus/data-fetch-utils/-/data-fetch-utils-0.5.2.tgz#4c791e69a5e46e44d609124e76a628ab112fa80f"
+  integrity sha512-zf3PAl52hVh6QQ4CtzsyVOBh85dog6k9Myfare+ftTPyHEvKK7GMhzNzZupLcMB6ujIcwjUD3dKmMtlzNupK6Q==
   dependencies:
-    "@daohaus/keychain-utils" "0.5.1"
+    "@daohaus/keychain-utils" "0.5.2"
     "@graphql-typed-document-node/core" "3.2.0"
     cross-fetch "3.1.8"
     graphql "16.3.0"
@@ -277,22 +277,22 @@
     tslib "2.6.1"
     wagmi "1.3.10"
 
-"@daohaus/keychain-utils@0.5.1", "@daohaus/keychain-utils@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@daohaus/keychain-utils/-/keychain-utils-0.5.1.tgz#03ea02b9bc501a4a4295f0e1339562b88a3182d5"
-  integrity sha512-RYBA5vyO2MARjJ5+4kbYB9Io/5DVycKV03ZguAzSNcRFOfPIhYBMeE/cpZwTrneSPBo+LbnRXiBw8e/skAcA7g==
+"@daohaus/keychain-utils@0.5.2", "@daohaus/keychain-utils@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@daohaus/keychain-utils/-/keychain-utils-0.5.2.tgz#4efe2b7c9421897bea3745b74bf229340a3993d4"
+  integrity sha512-wdx9gnW4zS7tObsTU0El3z2sCd3sEMAiKCUDUqKVh1NSisQm1ibxGwbNavK40GCKLgkvT7GU1Zo1irhmoXJvqw==
   dependencies:
     tslib "2.6.1"
     wagmi "1.3.10"
 
-"@daohaus/moloch-v3-data@0.5.1", "@daohaus/moloch-v3-data@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@daohaus/moloch-v3-data/-/moloch-v3-data-0.5.1.tgz#aaab3c3176c890ddff379617b6e0519cc19c8a72"
-  integrity sha512-soUXHR+YNFsMA4N4SE9EN7yASPAXtJMwZIF/5VdIK+GUMMj0lVyZU93ksEnZU5S3rtre4nSlBZmiL88Iy9BTyw==
+"@daohaus/moloch-v3-data@0.5.2", "@daohaus/moloch-v3-data@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@daohaus/moloch-v3-data/-/moloch-v3-data-0.5.2.tgz#f8b53448824fff8e3922e58842178d5c55a1ec1c"
+  integrity sha512-P6ogap7GWbYpyMnq+5hV0IatxaeIRt+hy2O4CyjBPqDqU0nN82l7/P0zBvPifbJicjn+BH/lmQ6b/DhDjcEEqg==
   dependencies:
-    "@daohaus/data-fetch-utils" "0.5.1"
-    "@daohaus/keychain-utils" "0.5.1"
-    "@daohaus/utils" "0.5.1"
+    "@daohaus/data-fetch-utils" "0.5.2"
+    "@daohaus/keychain-utils" "0.5.2"
+    "@daohaus/utils" "0.5.2"
     "@graphql-typed-document-node/core" "3.2.0"
     cross-fetch "3.1.8"
     date-fns "2.30.0"
@@ -306,26 +306,26 @@
     viem "1.6.0"
     wagmi "1.3.10"
 
-"@daohaus/moloch-v3-hooks@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@daohaus/moloch-v3-hooks/-/moloch-v3-hooks-0.5.1.tgz#4d0529c8cebde302baec798c3a020c8c2f615e9f"
-  integrity sha512-ukPVsfkYMV3dBRacy03XwHyIzubYQ8lHsu9K74fumyMvcNS7KbC+8Kpi4bRvfBe4U5/UmDwbyOe7qeOtGR52CQ==
+"@daohaus/moloch-v3-hooks@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@daohaus/moloch-v3-hooks/-/moloch-v3-hooks-0.5.2.tgz#ad56140809352c3d135280c051254470689f0f55"
+  integrity sha512-n/bfIKGsSevYEGLYp2iJjXV+3akYo/dnOqAdZhsR6TISCpf60jbM/axCbe63QhyD6lsgzmhTBCDmaFuTELMCBA==
   dependencies:
-    "@daohaus/abis" "0.5.1"
-    "@daohaus/data-fetch-utils" "0.5.1"
-    "@daohaus/keychain-utils" "0.5.1"
-    "@daohaus/moloch-v3-data" "0.5.1"
-    "@daohaus/profile-data" "0.5.1"
-    "@daohaus/utils" "0.5.1"
+    "@daohaus/abis" "0.5.2"
+    "@daohaus/data-fetch-utils" "0.5.2"
+    "@daohaus/keychain-utils" "0.5.2"
+    "@daohaus/moloch-v3-data" "0.5.2"
+    "@daohaus/profile-data" "0.5.2"
+    "@daohaus/utils" "0.5.2"
     react "18.2.0"
 
-"@daohaus/profile-data@0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@daohaus/profile-data/-/profile-data-0.5.1.tgz#cc9606f28013a95c8b9973f512b8f78c2c7665cf"
-  integrity sha512-ugDkTvMyqEeCR+U5RKqJaIdios9goK3cwicpK8doloSm5RNS76vkO5tTF9HqvxOY7CVgvYTNLgSonfZoKo5/jw==
+"@daohaus/profile-data@0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@daohaus/profile-data/-/profile-data-0.5.2.tgz#11240c6e558f708d9b1c26f961752158d6a0621c"
+  integrity sha512-01fLSGIs+elFE1uvUTtvszjrpHszazvKc3wNHFEwzBLwvqr+IYTlNiX3ve2dUtjE1uL/sC3ruG/5aUeAjeT5AQ==
   dependencies:
-    "@daohaus/keychain-utils" "0.5.1"
-    "@daohaus/utils" "0.5.1"
+    "@daohaus/keychain-utils" "0.5.2"
+    "@daohaus/utils" "0.5.2"
     date-fns "2.30.0"
     localforage "1.10.0"
     numbro "2.3.6"
@@ -335,12 +335,12 @@
     viem "1.6.0"
     wagmi "1.3.10"
 
-"@daohaus/utils@0.5.1", "@daohaus/utils@^0.5.0":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@daohaus/utils/-/utils-0.5.1.tgz#7a4af95dac489e349b5da681ee181b428ae99818"
-  integrity sha512-09CMy1BnJTZJVwjuhaQ/Vw0IxuMKFH75aE0hj/f5r2n/gTfNP40vKPEuDqE8O3xadZV/vtSNhtzzdlvDeSjANw==
+"@daohaus/utils@0.5.2", "@daohaus/utils@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@daohaus/utils/-/utils-0.5.2.tgz#36f60efe2deef4f6d435defbca0770f2ce7b0662"
+  integrity sha512-BDjoqK0zYqvApMvlda1p/2WGjAqkLAfFBRI72ad/S427TAVlMu/b/R7GTcawP5o/vswLPOjfysxxlNme7LKkhw==
   dependencies:
-    "@daohaus/keychain-utils" "0.5.1"
+    "@daohaus/keychain-utils" "0.5.2"
     date-fns "2.30.0"
     localforage "1.10.0"
     numbro "2.3.6"
